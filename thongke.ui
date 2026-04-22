@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RevenueWindow</class>
+ <widget class="QMainWindow" name="RevenueWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1066</width>
+    <height>1380</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Thống kê doanh thu</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+    background-color: #5a2d0c;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: #7a3f14;
+}
+QFrame#sidebar_2 {
+    background-color: #e8d3b3;
+}
+QFrame#main_area {
+    background-color: #f5e6cc;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
+    <item>
+     <widget class="QFrame" name="sidebar_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="logo_2">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>D:/16edaf03-df12-4f77-90d0-a4496ceb8155.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_ban_2">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Danh sách bàn</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_ban">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Hóa đơn</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_tk">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Thống kê</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_them_mon">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Thêm món</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="main_area">
+      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,2">
+       <item>
+        <layout class="QHBoxLayout" name="headerLayout">
+         <item>
+          <widget class="QLabel" name="title">
+           <property name="font">
+            <font>
+             <pointsize>22</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Thống kê doanh thu</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combo_filter">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <item>
+            <property name="text">
+             <string>7 ngày</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>30 ngày</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Theo tháng</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="total_label">
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Tổng: 0 đ</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QWidget" name="chart_widget" native="true"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

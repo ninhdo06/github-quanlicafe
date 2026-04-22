@@ -9,7 +9,11 @@ class BillWindow(QtWidgets.QWidget):
         super().__init__()
         # Load file hoadon.ui của mày
         uic.loadUi(os.path.join(BASE_DIR, 'view', 'hoadon.ui'), self)
-        
+        self.label_time.setWordWrap(True)
+        self.label_time.setMinimumHeight(50)  # tăng chiều cao nếu cần
+
+        # Tương tự cho total_money
+        self.total_money.setWordWrap(True)
         self.setWindowTitle(f"Hóa đơn - {table_name}")
         
         # 1. Cập nhật thông tin chung

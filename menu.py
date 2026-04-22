@@ -19,13 +19,14 @@ class MenuWindow(QtWidgets.QMainWindow):
 
         # 1. Quản lý giỏ hàng: 
         # Vì bạn đã đưa bảng ra ngoài Tab, chúng ta dùng 1 danh sách duy nhất cho bàn hiện tại
+        self.carts = {}
         self.current_table_num = "1" 
         self.current_cart = [] # Danh sách món ăn của bàn đang chọn
 
         # 2. Khởi tạo giao diện và dữ liệu
         self.update_menu_from_db()
         self.refresh_cart_display()
-
+        self.load_table(self.current_table_num)
         # 3. Kết nối các nút chức năng
         # Nút chuyển về màn hình chính (nếu có)
         if hasattr(self.ui, 'pushButton'):
@@ -42,6 +43,22 @@ class MenuWindow(QtWidgets.QMainWindow):
         self.auto_connect_menu_buttons()
 
     # ====================== THÊM MÓN ======================
+     # ------------------ THÊM PHƯƠNG THỨC load_table ------------------
+    def load_table(self, table_num):
+        """Tải giỏ hàng của bàn table_num lên giao diện"""
+        table_num = str(table_num)
+        self.current_table_num = table_num
+        
+        # Nếu bàn chưa có giỏ hàng thì tạo mới
+        if table_num not in self.carts:
+            self.carts[table_num] = []
+        
+        # Trỏ current_cart vào đúng giỏ hàng của bàn
+        self.current_cart = self.carts[table_num]
+        
+        # Cập nhật hiển thị bảng và tổng tiền
+        self.refresh_cart_display()
+
     def make_add_to_cart(self, name, price):
         return lambda: self.add_to_cart(name, price)
     def add_to_cart(self, name, price):
@@ -57,6 +74,7 @@ class MenuWindow(QtWidgets.QMainWindow):
             self.current_cart.append({'name': name, 'qty': 1, 'price': price})
 
         # Sau khi thay đổi dữ liệu, phải gọi hàm vẽ lại bảng và tính tổng
+        self.carts[self.current_table_num] = self.current_cart
         self.refresh_cart_display()
 
     def refresh_cart_display(self):
@@ -128,7 +146,8 @@ class MenuWindow(QtWidgets.QMainWindow):
             conn.close()
         except Exception as e:
             print(f"Lỗi DB: {e}")
-
+        self.current_cart.clear()
+        self.carts[self.current_table_num] = self.current_cart   # đồng bộ lại
         # 3. Thông báo thành công (CHỈ HIỆN 1 LẦN)
         QMessageBox.information(self, "Thanh toán", 
                                 f"Thanh toán bàn {self.current_table_num} thành công!\n"

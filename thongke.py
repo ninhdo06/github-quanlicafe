@@ -146,7 +146,26 @@ class CotWindow(QtWidgets.QMainWindow):
         ax.yaxis.set_major_formatter(FuncFormatter(format_money))
 
         ax.grid(axis='y', linestyle='--', alpha=0.7)
+        # Sau khi vẽ biểu đồ cột
+        bars = ax.patches  # lấy danh sách các thanh vừa vẽ
 
+        # Tìm giá trị lớn nhất để canh khoảng cách cho số
+        max_height = max(revenue) if revenue else 0
+        offset = max_height * 0.03  # 3% chiều cao cột lớn nhất
+
+        for bar, value in zip(bars, revenue):
+            height = bar.get_height()
+            # Định dạng số có dấu phẩy ngăn cách hàng nghìn
+            label = f"{value:,.0f} đ"
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,   # tọa độ x: giữa thanh
+                height + offset,                     # tọa độ y: phía trên thanh 1 khoảng
+                label,
+                ha='center', va='bottom', fontsize=9, color='black'
+            )
+        # Mở rộng trục Y
+        ylim = ax.get_ylim()
+        ax.set_ylim(0, ylim[1] + offset * 2)
         self.canvas.draw()
 
         total = sum(revenue)

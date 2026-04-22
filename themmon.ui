@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddProductWindow</class>
+ <widget class="QMainWindow" name="AddProductWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>706</width>
+    <height>735</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Thêm sản phẩm</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+    background-color: #5D2E0E; /* Màu nâu */
+    color: white;              /* Chữ trắng */
+    border-radius: 10px;       /* Bo góc */
+    padding: 10px;
+}
+QPushButton:hover {
+    background-color: #4A250B; /* Đổi màu khi di chuột vào */
+}
+#centralwidget {
+    background-color: #F5EBD7; 
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
+    <item>
+     <widget class="QFrame" name="formFrame">
+      <layout class="QVBoxLayout" name="formLayout">
+       <item>
+        <widget class="QLabel" name="title">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>THÊM SẢN PHẨM MỚI VÀO MENU</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="tenSanPham">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>TÊN SẢN PHẨM</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="loaiSanPham">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>Cà phê</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Đá xay - Sữa chua</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Trà</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Cacao - Matcha</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sinh tố - Nước ép</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="giaBan">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>GIÁ BÁN</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cb_label"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnThemAnh_2">
+         <property name="text">
+          <string>Thêm món</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="imageFrame">
+      <layout class="QVBoxLayout">
+       <item>
+        <widget class="QPushButton" name="btnThemAnh">
+         <property name="text">
+          <string>Thêm ảnh</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="preview">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Preview</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

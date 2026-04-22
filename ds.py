@@ -49,21 +49,21 @@ class DSWindow(QtWidgets.QMainWindow):
 
     def open_table(self, table_num):
         """Xử lý khi bấm vào bàn"""
-        # Gán số bàn sang màn hình Menu trước khi chuyển cảnh
-        menu_screen = self.widget.widget(3)
-        menu_screen.table_num = f"{table_num}" # Đảm bảo không bị rỗng gây lỗi
-
+        menu_screen = self.widget.widget(3)          # lấy màn hình Menu
+        menu_screen.load_table(str(table_num))       # 👈 Tải giỏ hàng của bàn đó
+    
+        # Đánh dấu bàn đang dùng (nếu chưa)
         if table_num not in self.used_tables:
             self.used_tables.add(table_num)
             self.update_table_status()
-        
-        # Đổi màu bàn thành đỏ (đang dùng)
+    
+        # Đổi màu bàn thành đỏ
         btn_name = f"btn_{table_num:02d}"
         if hasattr(self, btn_name):
             btn = getattr(self, btn_name)
             btn.setStyleSheet("background-color: #e74c3c; color: white; border-radius: 10px; padding: 10px;")
-        
-        # Chuyển sang màn hình Menu (Index 3)
+    
+        # Chuyển sang màn hình Menu
         self.widget.setCurrentIndex(3)
 
     def update_table_status(self):

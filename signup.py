@@ -3,13 +3,19 @@ import sqlite3
 from PyQt5 import QtWidgets, uic, QtCore, QtGui
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+image_path = os.path.join(BASE_DIR, "assets", "logo.jpg")
 class SignupWindow(QtWidgets.QMainWindow):
     def __init__(self, parent_widget):
         super().__init__()
         self.widget = parent_widget
         uic.loadUi(os.path.join(BASE_DIR, 'view', 'signup.ui'), self)
         
-        if hasattr(self, 'label'): self.label.clear()
+        if hasattr(self, 'label'):
+            self.label.clear()
+            pixmap = QtGui.QPixmap(image_path)  # cần import image_path hoặc định nghĩa lại
+            if not pixmap.isNull():
+                self.label.setPixmap(pixmap)
+                self.label.setScaledContents(True)
         self.b3.clicked.connect(self.signup)
 
     def signup(self):
@@ -77,7 +83,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("D:/16edaf03-df12-4f77-90d0-a4496ceb8155.jpg"))
+        self.label.setPixmap(QtGui.QPixmap(image_path))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)

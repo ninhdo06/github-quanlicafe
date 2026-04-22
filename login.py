@@ -13,7 +13,7 @@ import sqlite3
 from PyQt5 import QtWidgets, uic, QtCore,QtGui
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+image_path = os.path.join(BASE_DIR, "assets", "logo.jpg")
 # Đường dẫn database
 DB_FOLDER = os.path.join(BASE_DIR, "database")
 os.makedirs(DB_FOLDER, exist_ok=True)
@@ -28,13 +28,19 @@ class LoginWindow(QtWidgets.QMainWindow):
         # Load giao diện
         uic.loadUi(os.path.join(BASE_DIR, 'view', 'login.ui'), self)
         
-        # Xóa ảnh mặc định nếu có
         if hasattr(self, 'label'):
             self.label.clear()
+            pixmap = QtGui.QPixmap(image_path)
+            if not pixmap.isNull():
+                self.label.setPixmap(pixmap)
+                self.label.setScaledContents(True)
+            else:
+                print("Không tìm thấy ảnh tại:", image_path)
         
         # Kết nối nút
         self.b1.clicked.connect(self.login)
         self.b2.clicked.connect(self.go_to_signup)
+        
 
     def go_to_signup(self):
         self.widget.setCurrentIndex(1)  # Chuyển sang Signup
@@ -62,7 +68,6 @@ class LoginWindow(QtWidgets.QMainWindow):
             # Không chuyển thẳng sang Menu nữa
         else:
             self.error.setText("❌ Sai mật khẩu!")
-
 
 
 class Ui_MainWindow(object):
@@ -114,7 +119,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(self.frame)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("D:/16edaf03-df12-4f77-90d0-a4496ceb8155.jpg"))
+        self.label.setPixmap(QtGui.QPixmap(image_path))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
